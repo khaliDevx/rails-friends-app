@@ -1,0 +1,45 @@
+<%= form_with(model: friend) do |form| %>
+
+    <% if friend.errors.any? %>
+        <div class="text-danger">
+            <h6><%= pluralize(friend.errors.count, "error") %> prevented this friend from being saved:</h6>
+            <ul>
+                <% friend.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field form-group my-2">
+        <% form.label :first_name , class: "col-sm-2 col-form-label"%>
+        <%= form.text_field :first_name, class: "form-control", placeholder: "First Name "%>
+    </div>
+    <div class="field form-group my-2">
+        <% form.label :last_name , class: "col-sm-2 col-form-label"%>
+        <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name "%>
+    </div>
+    <div class="field form-group my-2">
+        <% form.label :age, class: "col-sm-2 col-form-label"%>
+        <%= form.number_field :age, class: "form-control", placeholder: "Age "%>
+    </div>
+    <div class="field form-group my-2">
+        <% form.label :phone, class: "col-sm-2 col-form-label"%>
+        <%= form.text_field :phone, class: "form-control", placeholder: "Phone "%>
+    </div>
+    <div class="field form-group my-2">
+        <% form.label :email, class: "col-sm-2 col-form-label"%>
+        <%= form.text_field :email, class: "form-control", placeholder: "Email "%>
+    </div>
+    <div class="field form-group my-2">
+        <% form.label :twitter, class: "col-sm-2 col-form-label"%>
+        <%= form.text_field :twitter, class: "form-control", placeholder: "Twitter "%>
+    </div>
+    <div class="field form-group my-2">
+        <%= form.number_field :user_id, id: :friend_user_id, value: current_user.id, type: :hidden, class: "form-control" %>
+    </div>
+    <div class="actions mt-3">
+        <%= form.submit :class => 'btn btn-dark'%>
+    </div>
+
+<%end%>

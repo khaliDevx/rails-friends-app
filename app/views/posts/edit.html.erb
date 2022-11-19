@@ -1,0 +1,10 @@
+<div class="card w-50">
+  <div class="card-header p-3"><h2>Editing post</h2></div>
+  <div class="card-body p-3">
+    <%= render "form", post: @post %>
+  </div>
+  <div class="card-footer p-3">
+    <%= link_to "Show this post", @post , class: "btn btn-dark"%>
+    <%= link_to "Back to posts", posts_path , class: "btn btn-secondary mx-3"%>
+  </div>
+</div>

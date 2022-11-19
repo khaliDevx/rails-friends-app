@@ -1,0 +1,6 @@
+<%= render @post %>
+
+<div class="my-4 d-flex flex-row">
+  <%= link_to "Edit", edit_post_path(@post), class: "btn btn-dark mx-2" %>
+  <%= button_to "Delete", @post, method: :delete, class: "btn btn-danger mx-2" %>
+</div>

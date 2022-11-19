@@ -1,0 +1,14 @@
+<!-- <div class="text-success m-1"><%= notice %></div> -->
+<div class="card w-50">
+  <div class="card-header bg-dark p-3">
+    <h3 class="text-light">Friend Info</h3>
+  </div>
+  <div class="card-body p-2">
+    <%= render @friend %>
+  </div>
+  <div class="card-footer p-2">
+    <%= link_to "Edit", edit_friend_path(@friend) , class: "btn btn-dark m-2"%>
+    <%= link_to "Back to friends", friends_path , class: "btn btn-secondary m-2"%>
+    <%= link_to 'Destroy', @friend, data: {turbo_method: :delete, turbo_confirm: 'Are you ure?'}, class: "btn btn-danger m-2"%>
+  </div>
+</div>

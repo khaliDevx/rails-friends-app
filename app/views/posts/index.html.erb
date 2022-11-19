@@ -1,0 +1,21 @@
+<h1 class="mb-5">Posts</h1>
+
+<% @posts.each do |post| %>
+
+  <div class="card w-50">
+    <div class="card-header p-3">
+      <h2><% current_user %></h2>
+    </div>
+    <div class="card-body p-3">
+      <%= render post %>
+    </div>
+    <div class="card-footer p-3">
+      <%= link_to "Show", post, class: "btn btn-dark"%>
+      <%= link_to "Download", posts_download_path(post), class: "btn btn-secondary mx-2" %>
+    </div>
+  </div>
+<%end%>
+
+<% if user_signed_in? %>
+  <%= link_to "New post", new_post_path, class:"btn btn-dark my-3" %>
+<% end %>

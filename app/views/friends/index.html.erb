@@ -1,0 +1,48 @@
+<style>
+    .thead-dark th {
+        color: #ccc;
+        background-color: #222;
+    }
+</style>
+
+<!-- <div class="text-success m-1"><%= notice %></div> -->
+
+<h1>Friends </h1>
+
+<table class="table table-striped table-bordered table-hover text-center">
+    <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Twitter</th>
+            <th>Remove Friend</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @friends.each do |friend| %>
+            <% if friend.user == current_user %>
+                <tr>
+                    <td>
+                        <%= link_to friend.first_name + ' ' + friend.last_name, friend,
+                        class: "text-primary text-decoration-none" %>
+                    </td>
+                    <td><%= friend.age ? friend.age : "null" %></td>
+                    <td><%= friend.phone ? friend.phone : "null" %></td>
+                    <td><%= friend.email ? friend.email : "null" %></td>
+                    <td><%= friend.twitter ? friend.twitter : "null" %></td>
+                    <td>
+                        <%= link_to 'Delete', friend, data: {turbo_method: :delete, turbo_confirm: 'Are you ure?'},
+                        class: "btn btn-outline-danger btn-sm w-50"%>
+                    </td>
+                </tr>
+            <% end %>
+        <%end%>
+    </tbody>
+</table>
+<% if user_signed_in? %>
+    <%= link_to "New Friend", new_friend_path, class: "btn btn-dark" %>
+<% end %>
+                <!-- link_to "Destroy", friend, method: :delete data: { confirm: 'Are you sure?'} -->
+
