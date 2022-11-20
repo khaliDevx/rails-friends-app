@@ -1,4 +1,4 @@
-<header class="px-3 text-bg-dark">
+<header class="px-3 text-bg-dark fixed-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="navbar-brand h1">
       <%= link_to 'Rails App', root_path, class: "nav-link text-light"%>
@@ -10,35 +10,45 @@
       data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent"
       aria-expanded="false"
-      aria-label="Toggle navigation">
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <ul
+        class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+      >
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'Friends', friends_path, class: "nav-link text-light"%>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign Out", destroy_user_session_path, data: {
-            "turbo-method": :delete }, class: "nav-link text-light"%>
-          </li>
+        <li class="nav-item">
+          <%= link_to 'Friends', friends_path, class: "nav-link text-light"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Add Friend', new_friend_path, class: "nav-link
+          text-light"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Add Post', new_post_path, class: "nav-link text-light"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign Out", destroy_user_session_path, data: {
+          "turbo-method": :delete }, class: "nav-link text-light"%>
+        </li>
 
-          <li class="nav-item">
-            <%= link_to 'Edit Profile', edit_user_registration_path, class:
-            "nav-link text-light"%>
-          </li>
+        <li class="nav-item">
+          <%= link_to 'Edit Profile', edit_user_registration_path, class:
+          "nav-link text-light"%>
+        </li>
         <% else %>
-          <li class="nav-item">
-            <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link
-            text-light"%>
-          </li>
+        <li class="nav-item">
+          <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link
+          text-light"%>
+        </li>
 
-          <li class="nav-item">
-            <%= link_to 'Sign In', new_user_session_path, class: "nav-link
-            text-white"%>
-          </li>
+        <li class="nav-item">
+          <%= link_to 'Sign In', new_user_session_path, class: "nav-link
+          text-white"%>
+        </li>
         <% end %>
         <li class="nav-item">
           <%= link_to 'About Us', posts_about_path, class: "nav-link
@@ -46,17 +56,22 @@
         </li>
       </ul>
     </div>
-    <form class="form-inline m-0">
-        <div class ="row ">
-          <div class="col-md-8">
-            <div class="form-outline">
-              <input type="text" id="form1" class="form-control" placeholder="Search..." />
-            </div>
-          </div>
-          <div class="col-md-3">
-            <button type="button" class="btn btn-secondary">Search</button>
+    <!-- <form class="form-inline m-0">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="form-outline">
+            <input
+              type="text"
+              id="form1"
+              class="form-control"
+              placeholder="Search..."
+            />
           </div>
         </div>
-      </form>
+        <div class="col-md-3">
+          <button type="button" class="btn btn-secondary">Search</button>
+        </div>
+      </div>
+    </form> -->
   </nav>
 </header>

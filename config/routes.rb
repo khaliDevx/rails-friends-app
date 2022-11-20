@@ -3,6 +3,5 @@ Rails.application.routes.draw do
   devise_for :users
   resources :friends
   get "posts/about"
-  get "posts/download"
   resources :posts
 end

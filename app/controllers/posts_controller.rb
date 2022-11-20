@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy download ]
+  before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :correct_user, only: %i[edit update destroy]
   # GET /posts or /posts.json
@@ -9,13 +9,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-
-  end
-
-  def download
     extension = @post.post_image.split(".")
     send_file Rails.root.join("public", "uploads", @post.post_image),
-          :type => "application/#{extension[1]}", :x_sendfile => true
+              :type => "application/#{extension[1]}", :x_sendfile => true
   end
 
   # GET /posts/new
@@ -74,10 +70,12 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   def correct_user
     @post = current_user.posts.find_by(id: params[:id])
     redirect_to posts_path, notice: "You are not authorized to edit this post" if @post.nil?
   end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
